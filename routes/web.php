@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('encuesta', 'HomeController@index')->name('home');
+Route::post('respuesta', 'HomeController@storeAnswer')->name('storeAnswer');
+
+
+Route::group(['prefix' => 'admin'],function(){
+	Route::resource('usuarios','usuariosController');
+	Route::resource('preguntas','preguntasController');
+
+});
