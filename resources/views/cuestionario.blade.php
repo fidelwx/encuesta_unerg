@@ -5,14 +5,13 @@
 @section('content') 
 <div class="col-md-12">
 	@foreach($preguntas as $pregunta)
-	<form action="{{route('storeAnswer')}}" method="post" accept-charset="utf-8">
+	<form id="fencuesta" action="{{route('storeAnswer')}}" method="post" accept-charset="utf-8">
 		<h2 align="center">{{$pregunta->question}}</h2>
 			@csrf
 			<input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-			<input type="hidden" name="area_id" value="{{Auth::user()->person->area->name}}">
-
+			<input type="hidden" name="area_id" value="{{Auth::user()->person->area->id}}">
 			<input type="hidden" name="poll_id" value="{{$pregunta->id}}">
-
+			<div id="alert-info" class=""></div>
 			<div class="form-group">
 				<div class="radio">
 					<label>	
@@ -27,10 +26,9 @@
 					</label>
 				</div>
 			</div>
-			<label for="respuesta">Respuesta</label>
-			<input type="text" class="form-control" id="respuesta" name="respuesta" placeholder="Escribe aqui tu opinion...">
-
-		<input class="btn btn-success" name="enviar" type="submit" value="Enviar">
+			<label for="respuesta">Comentario</label>
+			<input type="text" class="form-control" id="respuesta" name="respuesta" placeholder="Escribe aqui tu comentario aqui...">
+		<input class="btn btn-success" id="enviar" name="enviar" type="submit" value="Enviar">
 	</form>
 	@endforeach
 </div>
