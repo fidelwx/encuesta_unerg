@@ -4,6 +4,7 @@
 
 @section('content') 
 <div class="col-md-12">
+
 	@foreach($preguntas as $pregunta)
 	<form id="fencuesta" action="{{route('storeAnswer')}}" method="post" accept-charset="utf-8">
 		<h2 align="center">{{$pregunta->question}}</h2>
